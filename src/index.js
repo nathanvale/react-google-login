@@ -50,7 +50,8 @@ class GoogleLogin extends Component {
     if (e) {
       e.preventDefault(); // to prevent submit if used within form
     }
-    if (!this.state.disabled) {
+    setTimeout(()=>{
+      if (!this.state.disabled) {
       const auth2 = window.gapi.auth2.getAuthInstance();
       const { offline, redirectUri, onSuccess, onRequest, fetchBasicProfile, onFailure, prompt, scope, responseType } = this.props;
       const options = {
@@ -93,6 +94,8 @@ class GoogleLogin extends Component {
           );
       }
     }
+    },1000)
+
   }
 
   render() {
